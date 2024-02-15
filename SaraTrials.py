@@ -82,7 +82,7 @@ print(q.isEmpty())
 q.enqueue(8)
 print(q.dequeue())
 q.dequeue()
-print(q.items())
+
 
 
 
