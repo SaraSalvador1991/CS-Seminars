@@ -66,23 +66,37 @@ class Queue:
         return self.items == []
 
     def enqueue(self, item):
-        self.items.insert(0,item)
+        self.items.append(item) # queue where front is at positions 0, and back at position -1
+        # NOTE: use append is better than insert. insert(-1) does not work to add element at the last position
+        # since adding an element will increase the indices by one. Thus insert (-1) will put the element at the second last positon
 
     def dequeue(self):
-        return self.items.pop()
+        return self.items.pop(0)
 
     def size(self):
         return len(self.items)
+
 
 q=Queue()
 q.enqueue(4)
 q.enqueue('dog')
 q.enqueue(True)
-print(q.isEmpty())
-q.enqueue(8)
+print(q.isEmpty()) # queue [4,dog,true]
+q.enqueue(8) # insert now 8 at the back: the queue becomes [dog,true,8]
+print(q.dequeue()) # the element popped is the one that first entered the queue, hence 4
+q.enqueue('Thun') # I insert now another element: it enters the queue last, so 'dog' will go out
 print(q.dequeue())
-q.dequeue()
 
+# other example
+
+q=Queue() # queue qith 4 elements
+q.enqueue(4)
+q.enqueue('dog')
+q.enqueue(True)
+q.enqueue('Bern')
+print(q.isEmpty())
+q.enqueue('Thun')
+print(q.dequeue())
 
 
 # ----- stack
@@ -117,5 +131,24 @@ print(stack)
 # will cause an IndexError
 # as the stack is now empty
 
-# ---- linked list
+# -------------
+
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def isEmpty(self):
+        return self.items == []
+
+    def insert(self, item):
+        self.items.append(item)
+
+    def delete(self):
+        return self.items.pop()
+
+    def peek(self):
+        return self.items[len(self.items) - 1] # check the last element (the one that goes out)
+
+    def size(self):
+        return len(self.items)
 
