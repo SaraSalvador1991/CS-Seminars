@@ -31,10 +31,11 @@ class Person:
     print("Hello my name is " + self.name)
 
   def myfunc2(self):
-    print("My age is " + self.age)
+    print("I am", self.age, "years old")
 
-p1 = Person("John", 36)
+p1 = Person("Sara", 32)
 p1.myfunc()
+p1.myfunc2()
 
 # --------
 # queue
@@ -66,7 +67,7 @@ class Queue:
         return self.items == []
 
     def enqueue(self, item):
-        self.items.append(item) # queue where front is at positions 0, and back at position -1
+        self.items.append(item) # queue where front is at positions 0, and back at position -1 (last item)
         # NOTE: use append is better than insert. insert(-1) does not work to add element at the last position
         # since adding an element will increase the indices by one. Thus insert (-1) will put the element at the second last positon
 
@@ -89,9 +90,9 @@ print(q.dequeue())
 
 # other example
 
-q=Queue() # queue qith 4 elements
-q.enqueue(4)
-q.enqueue('dog')
+q=Queue() # queue with 4 elements
+q.enqueue(11)
+q.enqueue('cat')
 q.enqueue(True)
 q.enqueue('Bern')
 print(q.isEmpty())
@@ -151,4 +152,45 @@ class Stack:
 
     def size(self):
         return len(self.items)
+
+
+# -------------------------------
+# Linked lists
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+        def __repr__(self):
+            return self.data
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def __repr__(self):
+        node = self.head
+        nodes = []
+        while node is not None:
+            nodes.append(node.data)
+            node = node.next
+        nodes.append("None")
+        return " -> ".join(nodes)
+
+
+llist = LinkedList()
+print(llist)
+llist
+
+first_node = Node("a")
+llist.head = first_node
+print(llist)
+
+
+second_node = Node("b")
+third_node = Node("c")
+first_node.next = second_node  # here the connection to the next one
+second_node.next = third_node
+print(llist)
 
