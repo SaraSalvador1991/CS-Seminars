@@ -124,3 +124,5 @@ if __name__ == '__main__':
     ll3.insert(111, 6)
     ll3.remove_data(99)
     ll3.print_ll_data()
+    ll3.insert(111, ll3.get_size()-1)
+    ll3.print_ll_data()
