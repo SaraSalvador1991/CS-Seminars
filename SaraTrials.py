@@ -205,4 +205,4 @@ third_node = Node("c")
 first_node.next = second_node  # here the connection to the next one
 second_node.next = third_node
 print(llist)
-'''
+
