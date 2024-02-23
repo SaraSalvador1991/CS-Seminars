@@ -169,7 +169,7 @@ third_node = Node("c")
 first_node.next = second_node  # here the connection to the next one
 second_node.next = third_node
 print(llist)
-'''
+
 class Node:
 
     def __init__(self, val):
@@ -295,3 +295,29 @@ class LinkedList:
         """
         # we only have to check the head if is None or not
         return self.head == None
+
+
+def is_prime(self):
+    if self == 1:
+        return "False"
+    for i in range(2, int(self**0.5)+1):
+        if self % i == 0:
+            return "False"
+        else:
+            return "True"
+
+print(is_prime(3))
+
+'''
+def is_prime(num):
+    if num==1:
+        return "False"
+    elif num > 1:
+        for i in range(2,num):
+            if (num % i) == 0:
+                return "False"
+        else:
+            return "True"
+
+print(is_prime(9))
+

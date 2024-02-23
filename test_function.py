@@ -1,40 +1,69 @@
-import unittest
 '''
-class TestStringMethods(unittest.TestCase):
+import unittest
+class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
 
-    def test_upper(self):
-        self.assertEqual('foo'.upper(), 'FOO')
+    def get_area(self):
+        return self.width * self.height
 
-    def test_isupper(self):
-        self.assertTrue('FOO'.isupper())
-        self.assertFalse('Foo'.isupper())
+    def set_width(self, width):
+        self.width = width
 
-    def test_split(self):
-        s = 'hello world'
-        self.assertEqual(s.split(), ['hello', 'world'])
-        # check that s.split fails when the separator is not a string
-        with self.assertRaises(TypeError):
-            s.split(2)
+    def set_height(self, height):
+        self.height = height
+
+
+# The test based on unittest module
+class TestGetAreaRectangle(unittest.TestCase):
+    def runTest(self):
+        rectangle = Rectangle(2, 3)
+        self.assertEqual(rectangle.get_area(), 6, "incorrect area")
+
+
+# run the test
+if __name__ == '__main__':
+    unittest.main()
+
+
+class Even:
+    def __init__(self,x):
+        self.x = x
+    def is_even(self):
+        if self.x % 2 == 0:
+            return "True"
+import unittest
+
+class TestEven(unittest.TestCase):
+    def test_even(self):
+        even = Even(2)
+        self.assertEqual(even.is_even(), 'True', 'function is wrong.')
 
 if __name__ == '__main__':
     unittest.main()
 '''
+# -------------
 
 class Prime:
-    def __init__(self):
-        int self
+    def __int__(self,x):
+        self.x = x
+
     def is_prime(self):
-        if self%2 ==0:
-            return 'True'
+        if self.x == 1:
+            return "False"
+        elif self.x > 1:
+            for i in range(2, self.x):
+                if (self.x % i) == 0:
+                    return "False"
+            else:
+                return "True"
 
 import unittest
-
-class TestCalculations(unittest.TestCase):
-
+class TestPrime(unittest.TestCase):
     def test_prime(self):
-        prime = Prime(3)
-        self.assertEqual(prime.is_prime(), 'True', 'function is wrong.')
+        prime = Prime(5)
+        self.assertEqual(prime.is_prime(), "True", "function is wrong.")
 
 if __name__ == '__main__':
     unittest.main()
-
