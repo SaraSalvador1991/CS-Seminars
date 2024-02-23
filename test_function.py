@@ -1,4 +1,4 @@
-'''
+
 import unittest
 class Rectangle:
     def __init__(self, width, height):
@@ -42,7 +42,6 @@ class TestEven(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-'''
 # -------------
 
 class Prime:
@@ -62,8 +61,26 @@ class Prime:
 import unittest
 class TestPrime(unittest.TestCase):
     def test_prime(self):
-        prime = Prime(5)
+        prime = Prime(10)
         self.assertEqual(prime.is_prime(), "True", "function is wrong.")
+
+if __name__ == '__main__':
+    unittest.main()
+
+# -----------------
+
+class Hypotenuse:
+    def __init__(self, c1, c2):
+        self.c1 = c1
+        self.c2 = c2
+    def get_hypotenuse(self):
+        return (self.c1**2+self.c2**2)**0.5
+
+import unittest
+class TestPrime(unittest.TestCase):
+    def test_hypotenuse(self):
+        hypotenuse = Hypotenuse(3,4)
+        self.assertEqual(hypotenuse.get_hypotenuse(), 5, "function is wrong.")
 
 if __name__ == '__main__':
     unittest.main()
