@@ -83,10 +83,12 @@ q.enqueue(4)
 q.enqueue('dog')
 q.enqueue(True)
 print(q.isEmpty()) # queue [4,dog,true]
+#print(q.dequeue())
 q.enqueue(8) # insert now 8 at the back: the queue becomes [dog,true,8]
+print(q.size())
 print(q.dequeue()) # the element popped is the one that first entered the queue, hence 4
 q.enqueue('Thun') # I insert now another element: it enters the queue last, so 'dog' will go out
-print(q.dequeue())
+print(q.dequeue()) # dog
 
 # other example
 
@@ -131,8 +133,7 @@ print(stack)
 # uncommenting print(stack.pop())
 # will cause an IndexError
 # as the stack is now empty
-
-# -------------
+# ---------
 
 class Stack:
     def __init__(self):
@@ -152,6 +153,17 @@ class Stack:
 
     def size(self):
         return len(self.items)
+
+s = Stack()
+s.insert(11)
+s.insert("cat")
+s.insert("Thun")
+print(s.isEmpty())
+print(s.peek())
+s.delete()
+s.insert("Bern")
+print(s.peek())
+print(s.size())
 
 
 # -------------------------------
@@ -193,4 +205,4 @@ third_node = Node("c")
 first_node.next = second_node  # here the connection to the next one
 second_node.next = third_node
 print(llist)
-
+'''
