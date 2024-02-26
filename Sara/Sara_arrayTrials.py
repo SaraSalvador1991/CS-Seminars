@@ -71,6 +71,7 @@ for i in range(len(x)-1):
         print("The missing number is ", x[i]+1)
 
 # -----------
+
 x = [10,11,12,13,14,16,17,18,19,20]
 y = [i for i in range(10,21)]
 # compare the two arrays and find the missing element
