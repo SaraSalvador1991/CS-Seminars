@@ -106,9 +106,9 @@ class LinkedList(object):
             print(f"Given index is not valid. Current size of linked list is {self.size}.")
 
 
-### okay untill here
+## okay untill here
 
-    def remove_data(self, data: Any) -> None:   # should change
+    def remove_data(self, data: Any) -> None:   # should change this
         """
         Removes/Deletes the first appearance of data from the linked list.
         :param data: Data to be removed
@@ -124,7 +124,7 @@ class LinkedList(object):
             if current_node.get_data() == data:
                 data_found = True
                 print(f"Removed data '{data}'.")
-                previous_node.set_next(current_node.get_next())
+                previous_node.set_next(current_node.get_next())  ## here change
                 self.size -= 1
                 if self.size == 0:
                     self.head = None
@@ -135,12 +135,12 @@ class LinkedList(object):
                     self.head = previous_node.get_next()  # or 'self.head = current_node.get_next()'
             else:
                 previous_node = current_node
-                current_node = current_node.get_next()
+                current_node = current_node.get_next() ## here
                 index += 1
         if not data_found:
             raise ValueError(f"Data '{data}' not found.")
 
-    def remove_index(self, index: int) -> None:   # this in my opinion should not change
+    def remove_index(self, index: int) -> None:   ## should this change?
         """
         Removes/Deletes the specified index from the linked list.
         :param index: Index between 0 and size-1 of the linked list.
@@ -164,7 +164,7 @@ class LinkedList(object):
         else:
             raise IndexError(f"Given index is not valid. Current size of linked list is {self.size}.")
 
-    def get_data_at_index(self, index: int) -> Any:
+    def get_data_at_index(self, index: int) -> Any: ## also this? in my opinion not
         """
         Returns the data at the given index.
         :param index: Index between 0 and size-1 of the linked list.
@@ -179,7 +179,7 @@ class LinkedList(object):
             raise IndexError(f"Given index is not valid. Current size of linked list is {self.size}.")
 
 
-   # this should remain as before
+   ## this should remain as before
 
     def print_ll_data(self) -> None:
         """
