@@ -1,5 +1,6 @@
-from typing import Any
+# OK
 
+from typing import Any
 
 class Node(object):
     """
