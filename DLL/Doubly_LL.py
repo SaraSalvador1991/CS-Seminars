@@ -98,8 +98,8 @@ class LinkedList(object):
             for _ in range(0, index - 1):
                 iter_node = iter_node.get_next()
             node.set_next(iter_node.get_next())
-            node.set_prev(iter_node)
-            iter_node.get_next().set_previous(node)
+            node.set_prev(iter_node)    ## new line
+            iter_node.get_next().set_previous(node)     ## new line
             iter_node.set_next(node)
             self.size += 1
         else:
@@ -108,7 +108,7 @@ class LinkedList(object):
 
 ## okay untill here
 
-    def remove_data(self, data: Any) -> None:   # should change this
+    def remove_data(self, data: Any) -> None:   # i don't think this should change
         """
         Removes/Deletes the first appearance of data from the linked list.
         :param data: Data to be removed
@@ -119,12 +119,14 @@ class LinkedList(object):
         data_found = False
         current_node = self.head
         previous_node = self.head
+        next_node = self.head   ## new line
         index = 0
         while current_node is not None and data_found is False:
             if current_node.get_data() == data:
                 data_found = True
                 print(f"Removed data '{data}'.")
-                previous_node.set_next(current_node.get_next())  ## here change
+                previous_node.set_next(current_node.get_next())
+                next_node.set_prev(current_node.get_prev())  ## new line  ## TO BE CHECKED: do i need this?
                 self.size -= 1
                 if self.size == 0:
                     self.head = None
@@ -135,12 +137,12 @@ class LinkedList(object):
                     self.head = previous_node.get_next()  # or 'self.head = current_node.get_next()'
             else:
                 previous_node = current_node
-                current_node = current_node.get_next() ## here
+                current_node = current_node.get_next()
                 index += 1
         if not data_found:
             raise ValueError(f"Data '{data}' not found.")
 
-    def remove_index(self, index: int) -> None:   ## should this change?
+    def remove_index(self, index: int) -> None:   ## as for remove data, i think this applies also for DLL
         """
         Removes/Deletes the specified index from the linked list.
         :param index: Index between 0 and size-1 of the linked list.
@@ -164,7 +166,7 @@ class LinkedList(object):
         else:
             raise IndexError(f"Given index is not valid. Current size of linked list is {self.size}.")
 
-    def get_data_at_index(self, index: int) -> Any: ## also this? in my opinion not
+    def get_data_at_index(self, index: int) -> Any: ## also this
         """
         Returns the data at the given index.
         :param index: Index between 0 and size-1 of the linked list.
@@ -174,6 +176,7 @@ class LinkedList(object):
             current_node = self.head
             for _ in range(0, index):
                 current_node = current_node.get_next()
+                #current_node = current_node.get_prev() # ?
             return current_node.get_data()
         else:
             raise IndexError(f"Given index is not valid. Current size of linked list is {self.size}.")
