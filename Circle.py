@@ -52,7 +52,7 @@ class Circle:
 
 # ----------------------------------------
 
-c=Circle(1.8,5,0,0,5,3,1.5708)
+c=Circle(1.8,4,0,0,5,3,1.5708)
 print(c.Circumference())
 print(c.Area())
 print(c.Circumference_Sector())
