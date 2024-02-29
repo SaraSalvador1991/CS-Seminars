@@ -7,23 +7,23 @@ class DoublyLinkedList(object):
     :class: DoublyLinkedList
     A class representing a doubly linked list data structure.
 
-    The LinkedList class provides methods to manipulate the linked list such as appending data, inserting data at a
+    The DoublyLinkedList class provides methods to manipulate the  doubly linked list such as appending data, inserting data at a
     * given index, removing data, removing an index, getting the data at a given index, and printing the data in the
-    * linked list.
+    * doubly linked list.
 
-    The LinkedList class has the following attributes:
-    - `head`: A reference to the first node in the linked list.
-    - `tail`: A reference to the last node in the linked list.
-    - `size`: The number of elements in the linked list.
+    The DoublyLinkedList class has the following attributes:
+    - `head`: A reference to the first node in the doubly linked list.
+    - `tail`: A reference to the last node in the doubly linked list.
+    - `size`: The number of elements in the doubly linked list.
 
-    The LinkedList class has the following methods:
-    - `get_size`: Returns the size of the linked list.
-    - `append`: Appends data to the end of the linked list.
-    - `insert`: Inserts data at a given index in the linked list.
-    - `remove_data`: Removes the first appearance of data from the linked list.
-    - `remove_index`: Removes the specified index from the linked list.
+    The DoublyLinkedList class has the following methods:
+    - `get_size`: Returns the size of the doubly linked list.
+    - `append`: Appends data to the end of the doubly linked list.
+    - `insert`: Inserts data at a given index in the doubly linked list.
+    - `remove_data`: Removes the first appearance of data from the doubly linked list.
+    - `remove_index`: Removes the specified index from the doubly linked list.
     - `get_data_at_index`: Returns the data at the given index.
-    - `print_ll_data`: Prints the data of the current linked list.
+    - `print_ll_data`: Prints the data of the current doubly linked list.
 
     """
 
@@ -87,7 +87,7 @@ class DoublyLinkedList(object):
         :param data: Data to be removed
         """
         if self.size == 0:
-            print("Cannot remove data. Linked List is empty.")
+            print("Cannot remove data. Doubly linked List is empty.")
             return
         data_found = False
         current_node = self.head
@@ -120,7 +120,7 @@ class DoublyLinkedList(object):
     def remove_index(self, index: int) -> None:
         """
         Removes/Deletes the specified index from the doubly linked list.
-        :param index: Index between 0 and size-1 of the ldoubly inked list.
+        :param index: Index between 0 and size-1 of the doubly linked list.
         """
         if 0 <= index < self.size:
             current_node = self.head
@@ -143,7 +143,7 @@ class DoublyLinkedList(object):
                 self.head = previous_node.get_next()  # or 'self.head = current_node.get_next()'
                 self.head.set_prev(None)  ## new line, as above
         else:
-            raise IndexError(f"Given index is not valid. Current size of linked list is {self.size}.")
+            raise IndexError(f"Given index is not valid. Current size of the doubly linked list is {self.size}.")
 
     def get_data_at_index(self, index: int) -> Any:
         """
@@ -160,7 +160,7 @@ class DoublyLinkedList(object):
             raise IndexError(f"Given index is not valid. Current size of the doubly linked list is {self.size}.")
 
 
-    def print_ll_data(self) -> None:
+    def print_dll_data(self) -> None:
         """
         Prints the data of the current doubly linked list line by line in the form <Index i: data>.
         """
