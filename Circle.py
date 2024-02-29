@@ -35,31 +35,30 @@ class Circle:
         else:
             return ("The two circles do not interect")
 
+    def Graphic_prove(self):
+
+        from matplotlib.patches import Circle
+
+        plt.axis([-10, 10, -10, 10])
+        plt.axis("equal")
+        c1 = (self.c1x,self.c1y)
+        c2 = (self.c2x,self.c2y)
+        circle1 = Circle(c1, self.r1, fill=False)
+        circle2 = Circle(c2, self.r2, fill=False)
+
+        plt.gca().add_artist(circle1)
+        plt.gca().add_artist(circle2)
+        plt.show()
+
 c=Circle(1,1,0,0,1,5,1.5708)
 print(c.Circumference())
 print(c.Area())
 print(c.Circumference_Sector())
 print(c.Area_Sector())
 print(c.Intersect())
+c.Graphic_prove()
 
-## check with the plot
 
-from matplotlib.patches import Circle
-
-plt.axis([-10, 10, -10, 10])
-plt.axis("equal")
-
-center1 = (,0)
-radius1 = 1
-center2= (1,5)
-radius2=1
-
-circle1 = Circle(center1, radius1, fill=False)
-circle2 = Circle(center2,radius2,fill=False)
-
-plt.gca().add_artist(circle1)
-plt.gca().add_artist(circle2)
-plt.show()
 
 
 
