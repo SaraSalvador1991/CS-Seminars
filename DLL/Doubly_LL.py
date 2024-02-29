@@ -2,10 +2,10 @@ from typing import Any
 from DLL.Node import Node
 
 
-class LinkedList(object):
+class DoublyLinkedList(object):
     """
-    :class: LinkedList
-    A class representing a linked list data structure.
+    :class: DoublyLinkedList
+    A class representing a doubly linked list data structure.
 
     The LinkedList class provides methods to manipulate the linked list such as appending data, inserting data at a
     * given index, removing data, removing an index, getting the data at a given index, and printing the data in the
@@ -25,31 +25,6 @@ class LinkedList(object):
     - `get_data_at_index`: Returns the data at the given index.
     - `print_ll_data`: Prints the data of the current linked list.
 
-    Example usage:
-    ```
-    # Create a new linked list
-    linked_list = LinkedList()
-
-    # Append data to the linked list
-    linked_list.append(1)
-    linked_list.append(2)
-    linked_list.append(3)
-
-    # Insert data at a given index in the linked list
-    linked_list.insert(0, 0)
-    linked_list.insert(4, 4)
-
-    # Remove data from the linked list
-    linked_list.remove_data(2)
-
-    # Remove an index from the linked list
-    linked_list.remove_index(0)
-
-    # Get the data at a given index in the linked list
-    data = linked_list.get_data_at_index(0)
-
-    # Print the data in the linked list
-    linked_list.print_ll_data()
     """
 
     def __init__(self):
@@ -59,14 +34,14 @@ class LinkedList(object):
 
     def get_size(self) -> int:
         """
-        Returns the size of the linked list.
-        :return: Number of elements in the linked list.
+        Returns the size of the doubly linked list.
+        :return: Number of elements in the doubly linked list.
         """
         return self.size
 
     def append(self, data: Any) -> None:
         """
-        Appends data to the end of the linked list.
+        Appends data to the end of the doubly linked list.
         :param data: Data to be appended.
         """
         node = Node(data)
@@ -81,9 +56,9 @@ class LinkedList(object):
 
     def insert(self, data: Any, index: int) -> None:
         """
-        Inserts data at a given index in the linked list.
+        Inserts data at a given index in the doubly linked list.
         :param data: Data to be inserted.
-        :param index: Index between 0 and size of the linked list.
+        :param index: Index between 0 and size of the doubly linked list.
         """
         if index == self.size:
             self.append(data)
@@ -103,14 +78,12 @@ class LinkedList(object):
             iter_node.set_next(node)
             self.size += 1
         else:
-            print(f"Given index is not valid. Current size of linked list is {self.size}.")
+            print(f"Given index is not valid. Current size of the doubly linked list is {self.size}.")
 
 
-## okay untill here
-
-    def remove_data(self, data: Any) -> None:   # i don't think this should change
+    def remove_data(self, data: Any) -> None:
         """
-        Removes/Deletes the first appearance of data from the linked list.
+        Removes/Deletes the first appearance of data from the  doubly linked list.
         :param data: Data to be removed
         """
         if self.size == 0:
@@ -119,25 +92,24 @@ class LinkedList(object):
         data_found = False
         current_node = self.head
         previous_node = self.head
-        #next_node = self.head   ## new line
         index = 0
         while current_node is not None and data_found is False:
             if current_node.get_data() == data:
                 data_found = True
                 print(f"Removed data '{data}'.")
                 previous_node.set_next(current_node.get_next())
-                next_node= current_node.get_next()
-                next_node.set_prev(current_node.get_prev())  ## new line  ## TO BE CHECKED: do i need this?
+                next_node= current_node.get_next()      ## new line
+                next_node.set_prev(current_node.get_prev())        ## new line
                 self.size -= 1
                 if self.size == 0:
                     self.head = None
                     self.tail = None
                 elif index == self.size:
                     self.tail = previous_node
-                    self.tail.set_next(None)
+                    self.tail.set_next(None) ## after the (new) tail, None
                 elif index == 0:
                     self.head = previous_node.get_next()  # or 'self.head = current_node.get_next()'
-                    self.head_set.prev(None)
+                    self.head.set_prev(None) ## before the (new) head, None
             else:
                 previous_node = current_node
                 current_node = current_node.get_next()
@@ -145,10 +117,10 @@ class LinkedList(object):
         if not data_found:
             raise ValueError(f"Data '{data}' not found.")
 
-    def remove_index(self, index: int) -> None:   ## as for remove data, i think this applies also for DLL
+    def remove_index(self, index: int) -> None:
         """
-        Removes/Deletes the specified index from the linked list.
-        :param index: Index between 0 and size-1 of the linked list.
+        Removes/Deletes the specified index from the doubly linked list.
+        :param index: Index between 0 and size-1 of the ldoubly inked list.
         """
         if 0 <= index < self.size:
             current_node = self.head
@@ -158,41 +130,42 @@ class LinkedList(object):
                 current_node = current_node.get_next()
             print(f"Removed index {index}.")
             previous_node.set_next(current_node.get_next())
+            next_node = current_node.get_next()  ## new line
+            next_node.set_prev(current_node.get_prev())  ## new line
             self.size -= 1
             if self.size == 0:
                 self.head = None
                 self.tail = None
             elif index == self.size:
                 self.tail = previous_node
+                self.tail.set_next(None) ## new line, as above
             elif index == 0:
                 self.head = previous_node.get_next()  # or 'self.head = current_node.get_next()'
+                self.head.set_prev(None)  ## new line, as above
         else:
             raise IndexError(f"Given index is not valid. Current size of linked list is {self.size}.")
 
-    def get_data_at_index(self, index: int) -> Any: ## also this
+    def get_data_at_index(self, index: int) -> Any:
         """
         Returns the data at the given index.
-        :param index: Index between 0 and size-1 of the linked list.
+        :param index: Index between 0 and size-1 of the doubly linked list.
         :return: If the index is valid, returns the data at the given index.
         """
         if 0 <= index < self.size:
             current_node = self.head
             for _ in range(0, index):
                 current_node = current_node.get_next()
-                #current_node = current_node.get_prev() # ?
             return current_node.get_data()
         else:
-            raise IndexError(f"Given index is not valid. Current size of linked list is {self.size}.")
+            raise IndexError(f"Given index is not valid. Current size of the doubly linked list is {self.size}.")
 
-
-   ## this should remain as before
 
     def print_ll_data(self) -> None:
         """
-        Prints the data of the current linked list line by line in the form <Index i: data>.
+        Prints the data of the current doubly linked list line by line in the form <Index i: data>.
         """
         if self.size == 0:
-            print("Linked List is empty.")
+            print("Doubly linked List is empty.")
             return
         index = 0
         node = self.head
