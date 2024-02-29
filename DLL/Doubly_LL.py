@@ -74,7 +74,7 @@ class DoublyLinkedList(object):
                 iter_node = iter_node.get_next()
             node.set_next(iter_node.get_next())
             node.set_prev(iter_node)    ## new line
-            iter_node.get_next().set_previous(node)     ## new line
+            iter_node.get_next().set_prev(node)     ## new line
             iter_node.set_next(node)
             self.size += 1
         else:
