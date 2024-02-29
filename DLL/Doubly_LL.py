@@ -119,13 +119,14 @@ class LinkedList(object):
         data_found = False
         current_node = self.head
         previous_node = self.head
-        next_node = self.head   ## new line
+        #next_node = self.head   ## new line
         index = 0
         while current_node is not None and data_found is False:
             if current_node.get_data() == data:
                 data_found = True
                 print(f"Removed data '{data}'.")
                 previous_node.set_next(current_node.get_next())
+                next_node= current_node.get_next()
                 next_node.set_prev(current_node.get_prev())  ## new line  ## TO BE CHECKED: do i need this?
                 self.size -= 1
                 if self.size == 0:
@@ -133,8 +134,10 @@ class LinkedList(object):
                     self.tail = None
                 elif index == self.size:
                     self.tail = previous_node
+                    self.tail.set_next(None)
                 elif index == 0:
                     self.head = previous_node.get_next()  # or 'self.head = current_node.get_next()'
+                    self.head_set.prev(None)
             else:
                 previous_node = current_node
                 current_node = current_node.get_next()
