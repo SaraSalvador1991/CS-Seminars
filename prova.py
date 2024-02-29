@@ -323,9 +323,6 @@ print(is_prime(9))
 '''
 import numpy
 import matplotlib.pyplot as plt
-
-
-
 class Circle:
     def __init__(self, radius1, radius2, center1_x, center1_y, center2_x, center2_y, theta):  ## theta in rad
         self.r1 = float(radius1)
@@ -336,7 +333,7 @@ class Circle:
         self.c2y = float(center2_y)
         self.t = float(theta)
 
-    def Circumference(self):  # funtion that calculate the circumference of a circle of radius r
+    def Circumference(self):  # function that calculate the circumference of a circle of radius r
         return round(2 * numpy.pi * self.r1, 3)
 
     def Area(self):  # function that calculate the area of a circle of radius r
@@ -350,6 +347,7 @@ class Circle:
 
     def Intersect(self):
         dist = ((self.c1x - self.c2x) ** 2 + (self.c1y - self.c2y) ** 2) ** 0.5
+        return round(dist,3)
         if dist <= self.r1 - self.r2:
             return ("Circle 2 is inside circle 1")
         elif dist <= self.r2 - self.r1:
@@ -365,7 +363,7 @@ class Circle:
 
         from matplotlib.patches import Circle
 
-        plt.axis([-10, 10, -10, 10])
+        plt.axis([-10, 10,-10,10])
         plt.axis("equal")
         c1 = (self.c1x,self.c1y)
         c2 = (self.c2x,self.c2y)
@@ -377,7 +375,7 @@ class Circle:
         plt.show()
 
 
-c = Circle(5, 1, 0, 0, 1, 5, 1.5708)
+c = Circle(6, 1, 0, 0, 1, 5, 1.5708)
 print(c.Circumference())
 print(c.Area())
 print(c.Circumference_Sector())

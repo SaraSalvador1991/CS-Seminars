@@ -24,14 +24,14 @@ class Circle:
 
     def Intersect(self):
         dist = ((self.c1x-self.c2x)**2+(self.c1y-self.c2y)**2)**0.5
-        if dist <= self.r1-self.r2:
+        if dist <= self.r1 - self.r2:
             return("Circle 2 is inside circle 1")
-        elif dist <= self.r2-self.r1:
-            return ("Circle 1 is inside circle 1")
+        elif dist <= self.r2 - self.r1:
+            return ("Circle 1 is inside circle 2")
         elif dist < self.r1 + self.r2:
-            return ("The two cricle intersect")
+            return ("The two cricles intersect")
         elif dist == self.r1 + self.r2:
-            return ("The two circle intersect in one point")
+            return ("The two circles intersect in one point")
         else:
             return ("The two circles do not interect")
 
@@ -50,7 +50,9 @@ class Circle:
         plt.gca().add_artist(circle2)
         plt.show()
 
-c=Circle(1,1,0,0,1,5,1.5708)
+# ----------------------------------------
+
+c=Circle(1.8,5,0,0,5,3,1.5708)
 print(c.Circumference())
 print(c.Area())
 print(c.Circumference_Sector())
