@@ -1,5 +1,5 @@
 from typing import Any
-from DLL.Node import Node
+from classes.node import Node
 
 
 class LinkedList(object):
@@ -75,7 +75,6 @@ class LinkedList(object):
             self.tail = node
         else:
             self.tail.set_next(node)
-            node.set_prev(self.tail)
             self.tail = node
         self.size += 1
 
@@ -98,17 +97,12 @@ class LinkedList(object):
             for _ in range(0, index - 1):
                 iter_node = iter_node.get_next()
             node.set_next(iter_node.get_next())
-            node.set_prev(iter_node)    ## new line
-            iter_node.get_next().set_previous(node)     ## new line
             iter_node.set_next(node)
             self.size += 1
         else:
             print(f"Given index is not valid. Current size of linked list is {self.size}.")
 
-
-## okay untill here
-
-    def remove_data(self, data: Any) -> None:   # i don't think this should change
+    def remove_data(self, data: Any) -> None:
         """
         Removes/Deletes the first appearance of data from the linked list.
         :param data: Data to be removed
@@ -119,25 +113,20 @@ class LinkedList(object):
         data_found = False
         current_node = self.head
         previous_node = self.head
-        #next_node = self.head   ## new line
         index = 0
         while current_node is not None and data_found is False:
             if current_node.get_data() == data:
                 data_found = True
                 print(f"Removed data '{data}'.")
                 previous_node.set_next(current_node.get_next())
-                next_node= current_node.get_next()
-                next_node.set_prev(current_node.get_prev())  ## new line  ## TO BE CHECKED: do i need this?
                 self.size -= 1
                 if self.size == 0:
                     self.head = None
                     self.tail = None
                 elif index == self.size:
                     self.tail = previous_node
-                    self.tail.set_next(None)
                 elif index == 0:
                     self.head = previous_node.get_next()  # or 'self.head = current_node.get_next()'
-                    self.head_set.prev(None)
             else:
                 previous_node = current_node
                 current_node = current_node.get_next()
@@ -145,7 +134,7 @@ class LinkedList(object):
         if not data_found:
             raise ValueError(f"Data '{data}' not found.")
 
-    def remove_index(self, index: int) -> None:   ## as for remove data, i think this applies also for DLL
+    def remove_index(self, index: int) -> None:
         """
         Removes/Deletes the specified index from the linked list.
         :param index: Index between 0 and size-1 of the linked list.
@@ -169,7 +158,7 @@ class LinkedList(object):
         else:
             raise IndexError(f"Given index is not valid. Current size of linked list is {self.size}.")
 
-    def get_data_at_index(self, index: int) -> Any: ## also this
+    def get_data_at_index(self, index: int) -> Any:
         """
         Returns the data at the given index.
         :param index: Index between 0 and size-1 of the linked list.
@@ -179,13 +168,9 @@ class LinkedList(object):
             current_node = self.head
             for _ in range(0, index):
                 current_node = current_node.get_next()
-                #current_node = current_node.get_prev() # ?
             return current_node.get_data()
         else:
             raise IndexError(f"Given index is not valid. Current size of linked list is {self.size}.")
-
-
-   ## this should remain as before
 
     def print_ll_data(self) -> None:
         """
@@ -204,3 +189,100 @@ class LinkedList(object):
             node = node.get_next()
         # print(f"Tail data: {self.tail.get_data()}")
         print("--------------------")
+
+
+if __name__ == '__main__':
+    ll = LinkedList()
+    ll.print_ll_data()
+    print(ll.get_size())
+    ll.append(11)
+    print(ll.get_size())
+    ll.print_ll_data()
+    ll.append('bliblablup')
+    print(ll.get_size())
+    ll.print_ll_data()
+    ll.append(22)
+    ll.append('haha')
+    ll.append(33)
+    ll.print_ll_data()
+    ll.remove_data(22)
+    ll.print_ll_data()
+    a = 44
+    try:
+        ll.remove_data(a)
+    except ValueError:
+        print(f"A ValueError was raised as expected. Data {a} not found.")
+    a = 'hahaha'
+    try:
+        ll.remove_data(a)
+    except ValueError:
+        print(f"A ValueError was raised as expected. Data {a} not found.")
+
+    ll2 = LinkedList()
+    ll2.remove_data(100)
+    ll2.append(100)
+    ll2.print_ll_data()
+    ll2.remove_data(100)
+    ll2.print_ll_data()
+
+    ll3 = LinkedList()
+    ll3.insert(55, 0)
+    ll3.print_ll_data()
+    ll3.insert(66, 0)
+    ll3.print_ll_data()
+    ll3.insert(77, ll3.get_size())
+    ll3.print_ll_data()
+    ll3.insert(88, 1)
+    ll3.print_ll_data()
+    ll3.insert(99, 2)
+    ll3.print_ll_data()
+    ll3.insert(111, 6)
+    ll3.remove_data(99)
+    ll3.print_ll_data()
+    ll3.insert(111, ll3.get_size() - 1)
+    ll3.print_ll_data()
+
+    ll4 = LinkedList()
+    a = 0
+    try:
+        ll4.remove_index(a)
+    except IndexError:
+        print(f"An IndexError was raised as expected. Index {a} not found.")
+    ll4.append('a')
+    ll4.print_ll_data()
+    ll4.remove_index(0)
+    ll4.print_ll_data()
+    ll4.append('b')
+    ll4.append('c')
+    ll4.print_ll_data()
+    ll4.remove_index(0)
+    ll4.print_ll_data()
+    ll4.append('d')
+    ll4.append('e')
+    ll4.append('f')
+    ll4.append('g')
+    ll4.print_ll_data()
+    ll4.remove_index(ll4.get_size()-1)
+    ll4.print_ll_data()
+    ll4.remove_index(2)
+    ll4.print_ll_data()
+    try:
+        ll4.remove_index(ll4.get_size())
+    except IndexError:
+        print(f"An IndexError was raised as expected. Index {ll4.get_size()} not found.")
+
+    ll5 = LinkedList()
+    ll5.append(1234)
+    ll5.append('Everyone')
+    ll5.append("Everyone who helped has been rewarded.")
+    ll5.append(["I successfully completed a map", 9876, oct(10), [1, 2, 3]])
+    ll5.append(0xDA)
+    ll5.print_ll_data()
+    get_data = ll5.get_data_at_index(2)
+    print(get_data)
+    print(ll5.get_data_at_index(0))
+    ll5.print_ll_data()
+    ll5.remove_data(1234)
+    ll5.print_ll_data()
+    ll5.remove_data(0xDA)
+    ll5.print_ll_data()
