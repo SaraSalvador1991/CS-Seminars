@@ -66,6 +66,7 @@ class DoublyLinkedList(object):
         node = Node(data)
         if index == 0:
             node.set_next(self.head)
+            self.head.set_prev(node)  ### new line
             self.head = node
             self.size += 1
         elif 0 < index < self.size:
@@ -99,7 +100,8 @@ class DoublyLinkedList(object):
                 print(f"Removed data '{data}'.")
                 previous_node.set_next(current_node.get_next())
                 next_node= current_node.get_next()      ## new line
-                next_node.set_prev(current_node.get_prev())        ## new line
+                # next_node.set_prev(current_node.get_prev())        ## new line
+                next_node.set_prev(previous_node)  ### Line 103 can be simplified
                 self.size -= 1
                 if self.size == 0:
                     self.head = None
@@ -131,7 +133,8 @@ class DoublyLinkedList(object):
             print(f"Removed index {index}.")
             previous_node.set_next(current_node.get_next())
             next_node = current_node.get_next()  ## new line
-            next_node.set_prev(current_node.get_prev())  ## new line
+            # next_node.set_prev(current_node.get_prev())  ## new line
+            next_node.set_prev(previous_node)  ### Same as line 103
             self.size -= 1
             if self.size == 0:
                 self.head = None
