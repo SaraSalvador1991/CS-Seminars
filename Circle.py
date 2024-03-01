@@ -31,6 +31,7 @@ class TwoCircles:
         self.c2y = float(center2_y)
 
     def Intersect(self):
+
         dist = ((self.c1x-self.c2x)**2+(self.c1y-self.c2y)**2)**0.5
         if dist <= self.r1 - self.r2:
             print("Circle 2 is inside circle 1 and the area of the intersection is", round(numpy.pi * self.r2 ** 2,3))
@@ -86,6 +87,7 @@ class TwoCircles:
             ax.set_ylim(-10, 10)
             ax.set_aspect('equal')
             plt.show()
+
         elif dist < self.r1 + self.r2:
 
             import shapely.geometry as sg
@@ -151,9 +153,9 @@ class TwoCircles:
 # -------------------------
 
 radius1 = 3
-radius2 = 2
+radius2 = 4
 center1 = (0,0)
-center2= (0,0)
+center2= (2,-1)
 
 c1 = Circle(radius1, 0.57)
 c2 = Circle(radius2, 0.57)
