@@ -47,6 +47,46 @@ class TwoCircles:
         else:
             print("The two circles do not interect")
 
+    def get_Intersection(self):
+
+        dist = ((self.c1x - self.c2x) ** 2 + (self.c1y - self.c2y) ** 2) ** 0.5
+        if dist <= self.r1 - self.r2:
+            return None
+        elif dist <= self.r1 - self.r2:
+            return None
+        elif dist < self.r1 + self.r2:
+
+            a = (self.r1 ** 2 - self.r2 ** 2 + dist ** 2) / (2 * dist)
+            h = math.sqrt(self.r1 ** 2 - a ** 2)
+            x2 = self.c1x + a * (self.c2x - self.c1x) / dist
+            y2 = self.c1y + a * (self.c2y - self.c1y) / dist
+            x3 = x2 + h * (self.c2y - self.c1y) / dist
+            y3 = y2 - h * (self.c2x - self.c1x) / dist
+
+            x4 = x2 - h * (self.c2y - self.c1y) / dist
+            y4 = y2 + h * (self.c2x - self.c1x) / dist
+
+            I1 = (x3,y3)
+            I2 = (x4,y4)
+
+            print("The intersection points are", I1, "and ", I2)
+
+        elif dist == self.r1 + self.r2:
+            a = (self.r1 ** 2 - self.r2 ** 2 + dist ** 2) / (2 * dist)
+            h = math.sqrt(self.r1 ** 2 - a ** 2)
+            x2 = self.c1x + a * (self.c2x - self.c1x) / dist
+            y2 = self.c1y + a * (self.c2y - self.c1y) / dist
+            x3 = x2 + h * (self.c2y - self.c1y) / dist
+            y3 = y2 - h * (self.c2x - self.c1x) / dist
+
+            I = (x3, y3)
+
+            print("The intersection point is ", I)
+
+        else:
+            return None
+
+
     def Graphic_prove(self):
 
         dist = ((self.c1x - self.c2x) ** 2 + (self.c1y - self.c2y) ** 2) ** 0.5
@@ -93,6 +133,16 @@ class TwoCircles:
             import shapely.geometry as sg
             import descartes
 
+            a = (self.r1 ** 2 - self.r2 ** 2 + dist ** 2) / (2 * dist)
+            h = math.sqrt(self.r1 ** 2 - a ** 2)
+            x2 = self.c1x + a * (self.c2x - self.c1x) / dist
+            y2 = self.c1y + a * (self.c2y - self.c1y) / dist
+            x3 = x2 + h * (self.c2y - self.c1y) / dist
+            y3 = y2 - h * (self.c2x - self.c1x) / dist
+
+            x4 = x2 - h * (self.c2y - self.c1y) / dist
+            y4 = y2 + h * (self.c2x - self.c1x) / dist
+
             circ1 = sg.Point(self.c1x, self.c1y).buffer(self.r1)
             circ2 = sg.Point(self.c2x, self.c2y).buffer(self.r2)
 
@@ -105,6 +155,7 @@ class TwoCircles:
             ax.add_patch(descartes.PolygonPatch(left, fc='w', ec='k', alpha=0.2))
             ax.add_patch(descartes.PolygonPatch(right, fc='w', ec='k', alpha=0.2))
             ax.add_patch(descartes.PolygonPatch(middle, fc='b', ec='k', alpha=0.2))
+            ax.scatter([x3, x4], [y3, y4], marker="o")
 
             # control display
             ax.set_xlim(-10, 10);
@@ -117,6 +168,13 @@ class TwoCircles:
             import shapely.geometry as sg
             import descartes
 
+            a = (self.r1 ** 2 - self.r2 ** 2 + dist ** 2) / (2 * dist)
+            h = math.sqrt(self.r1 ** 2 - a ** 2)
+            x2 = self.c1x + a * (self.c2x - self.c1x) / dist
+            y2 = self.c1y + a * (self.c2y - self.c1y) / dist
+            x3 = x2 + h * (self.c2y - self.c1y) / dist
+            y3 = y2 - h * (self.c2x - self.c1x) / dist
+
             circ1 = sg.Point(self.c1x, self.c1y).buffer(self.r1)
             circ2 = sg.Point(self.c2x, self.c2y).buffer(self.r2)
 
@@ -124,6 +182,7 @@ class TwoCircles:
             ax = plt.gca()
             ax.add_patch(descartes.PolygonPatch(circ1, fc='w', ec='k', alpha=0.2))
             ax.add_patch(descartes.PolygonPatch(circ2, fc='w', ec='k', alpha=0.2))
+            ax.scatter(x3, y3, marker="o")
 
             # control display
             ax.set_xlim(-10, 10);
@@ -152,10 +211,10 @@ class TwoCircles:
 
 # -------------------------
 
-radius1 = 3
-radius2 = 4
+radius1 = 1
+radius2 = 1
 center1 = (0,0)
-center2= (2,-1)
+center2= (2,0)
 
 c1 = Circle(radius1, 0.57)
 c2 = Circle(radius2, 0.57)
