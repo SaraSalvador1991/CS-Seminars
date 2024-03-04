@@ -34,22 +34,23 @@ class TwoCircles:
 
         dist = ((self.c1x-self.c2x)**2+(self.c1y-self.c2y)**2)**0.5
         if dist <= self.r1 - self.r2:
-            print("Circle 2 is inside circle 1 and the area of the intersection is", round(numpy.pi * self.r2 ** 2,3))
+            return f"Circle 2 is inside circle 1 and the area of the intersection is {round(numpy.pi * self.r2 ** 2,3)}"
         elif dist <= self.r2 - self.r1:
-            print("Circle 1 is inside circle 2 and the area of the intersection is", round(numpy.pi * self.r1 ** 2,3))
+            return f"Circle 1 is inside circle 2 and the area of the intersection is {round(numpy.pi * self.r1 ** 2,3)}"
         elif dist < self.r1 + self.r2:
             d1 = (self.r1**2-self.r2**2+dist**2)/(2*dist)
-            d2 = dist -d1
+            d2 = dist - d1
             A_int = self.r1**2*math.acos(d1/self.r1)-d1*(self.r1**2-d1**2)**0.5+self.r2**2*math.acos(d2/self.r2)-d2*(self.r2**2-d2**2)**0.5
-            print("The two cricles intersect and the area of the intersection is ", round(A_int,3))
+            return f"The two circles intersect and the area of the intersection is  {round(A_int,3)}"
         elif dist == self.r1 + self.r2:
-            print("The two circles intersect in one point")
+            return "The two circles intersect in one point"
         else:
-            print("The two circles do not interect")
+            return "The two circles do not intersect"
 
     def get_Intersection(self):
 
         dist = ((self.c1x - self.c2x) ** 2 + (self.c1y - self.c2y) ** 2) ** 0.5
+
         if dist <= self.r1 - self.r2:
             return None
         elif dist <= self.r1 - self.r2:
@@ -69,7 +70,7 @@ class TwoCircles:
             I1 = (x3,y3)
             I2 = (x4,y4)
 
-            print("The intersection points are", I1, "and ", I2)
+            return f"The intersection points are {I1} and {I2}"
 
         elif dist == self.r1 + self.r2:
             a = (self.r1 ** 2 - self.r2 ** 2 + dist ** 2) / (2 * dist)
@@ -81,7 +82,7 @@ class TwoCircles:
 
             I = (x3, y3)
 
-            print("The intersection point is ", I)
+            return f"The intersection point is {I}"
 
         else:
             return None
@@ -211,10 +212,10 @@ class TwoCircles:
 
 # -------------------------
 
-radius1 = 3
-radius2 = 4
+radius1 = 1
+radius2 = 1
 center1 = (0,0)
-center2= (2,-1)
+center2= (2,0)
 
 c1 = Circle(radius1, 0.57)
 c2 = Circle(radius2, 0.57)
