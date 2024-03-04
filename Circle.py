@@ -211,10 +211,10 @@ class TwoCircles:
 
 # -------------------------
 
-radius1 = 1
-radius2 = 1
+radius1 = 3
+radius2 = 4
 center1 = (0,0)
-center2= (2,0)
+center2= (2,-1)
 
 c1 = Circle(radius1, 0.57)
 c2 = Circle(radius2, 0.57)
