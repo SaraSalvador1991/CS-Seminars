@@ -234,4 +234,5 @@ print(c2.Area_Sector())
 Tc= TwoCircles(radius1,radius2,center1[0],center1[1],center2[0], center2[1])
 
 print(Tc.Intersect())
+print(Tc.get_Intersection())
 Tc.Graphic_prove()
