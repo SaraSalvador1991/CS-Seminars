@@ -4,8 +4,10 @@ import numpy
 import matplotlib.pyplot as plt
 
 class Circle:
-    def __init__(self, radius, theta):  ## theta in rad
+    def __init__(self, radius, x,y, theta):  ## theta in rad
         self.r = float(radius)
+        self.x = x
+        self.y = y
         self.t = float(theta)
 
     def Circumference(self):            # funtion that calculate the circumference of a circle of radius r
@@ -19,7 +21,10 @@ class Circle:
     def Area_Sector(self):
         return round(self.r**2/2*self.t,3)
 
-
+#def compute_interection(c1: Circle,c2:Circle):  ## more compact one function, shape function and test if two circle intersect (only function intersect)
+    #c1.r c2.r
+#c1.x, c1.y
+#c2.x,c2.y
 class TwoCircles:
 
     def __init__(self, radius1, radius2, center1_x, center1_y, center2_x, center2_y):  ## theta in rad
@@ -212,10 +217,10 @@ class TwoCircles:
 
 # -------------------------
 
-radius1 = 1
-radius2 = 1
+radius1 = 3
+radius2 = 4
 center1 = (0,0)
-center2= (2,0)
+center2= (2,-1)
 
 c1 = Circle(radius1, 0.57)
 c2 = Circle(radius2, 0.57)
