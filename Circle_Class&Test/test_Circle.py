@@ -9,8 +9,8 @@ class TestCircle(unittest.TestCase):
         c1 = Circle(0.5,1,1)
         c2 = Circle(1,3,3)
         self.assertEqual(compute_intersection(c1,c2), "The two circles do not intersect", "something is wrong")
-        self.assertEqual(Area(c1), round(np.pi*0.5**2,3), "something is wrong")
-        self.assertEqual(Circumference(c2), round(np.pi * 1* 2, 3), "something is wrong")
+        self.assertEqual(Area(c1), 0.785,  "something is wrong")
+        self.assertEqual(Circumference(c2), 6.283, "something is wrong")
 # run the test
 if __name__ == '__main__':
     unittest.main()
