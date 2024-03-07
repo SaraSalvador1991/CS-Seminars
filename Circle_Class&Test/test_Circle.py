@@ -1,9 +1,9 @@
 import unittest
 import numpy as np
 from Circle_Class import Circle
-from Functions import compute_intersection
-from Functions import Area
-from Functions import Circumference
+from Functions_Circle import compute_intersection
+from Functions_Circle import Area
+from Functions_Circle import Circumference
 class TestCircle(unittest.TestCase):
     def runTest(self):
         c1 = Circle(0.5,1,1)
