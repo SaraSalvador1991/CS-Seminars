@@ -2,12 +2,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # First Circle
-r1 = 0.5  # radius of first circle
-center1 = (1, 1)  # center of first circle
+r1 = 1  # radius of first circle
+center1 = (0, 0)  # center of first circle
 
 # Second circle
-r2 = 1  # radius of second circle
-center2 = (3, 3)  # center of second circle
+r2 = 2  # radius of second circle
+center2 = (2, -1)  # center of second circle
 
 # parametric points of the first circle
 theta1 = np.linspace(0, 2*np.pi, 100)

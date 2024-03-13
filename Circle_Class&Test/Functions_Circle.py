@@ -17,6 +17,5 @@ def compute_intersection(c1:Circle, c2:Circle):
 def Area (c:Circle):
     return round(numpy.pi * c.r ** 2, 3)
 
-
 def Circumference(c:Circle):
     return round(2*numpy.pi*c.r,3)

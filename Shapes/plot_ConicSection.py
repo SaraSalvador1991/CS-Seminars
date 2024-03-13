@@ -25,5 +25,5 @@ def plot_conic_section(expression):
 
 # Example usage:
 x, y = symbols('x y')
-expression =  3*x**2 + 2*x*y+ y**2 - 9 # Example expression
+expression =  3*x**2 + 5*x*y+ y**2 + 3*x + 7*y + 1 # Example expression
 plot_conic_section(expression)
