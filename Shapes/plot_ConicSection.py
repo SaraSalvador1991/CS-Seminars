@@ -25,5 +25,5 @@ def plot_conic_section(expression):
 
 # Example usage:
 x, y = symbols('x y')
-expression = x**2 + 3*x*y + y**2 + 7*x+ 9*y - 9  # Example expression of a circle with radius 3
+expression =  3*x**2 + 2*x*y+ y**2 - 9 # Example expression
 plot_conic_section(expression)
