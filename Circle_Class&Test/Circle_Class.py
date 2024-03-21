@@ -24,7 +24,16 @@ class Circle(Shape):
         return round(2 * numpy.pi * self.r, 3)
 
 class Square(Shape):
-    def __init__(self):
+    def __init__(self,radius, x, y):
+        c = Point(x,y)
+        super().__init__(c)
+        self.r = float(radius)
+    def circumference(self):
+        return round((2*self.r/(2)**0.5)*4,3)
+
+
+
+
 
 # circle and square. in common: a center
 #uml
