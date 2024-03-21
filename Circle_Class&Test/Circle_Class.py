@@ -1,41 +1,5 @@
-import numpy
-
-class Point:
-    def __init__(self,x,y):
-        self.x = x
+class Circle:
+    def __init__(self,x,y,radius):
+        self.x=x
         self.y = y
-class Shape:
-    def __init__(self, center: Point):
-        self.center = center
-        self.x = self.center.x
-        self.y = self.center.y
-
-    def circumference(self):
-        return round(2 * numpy.pi * self.r, 3)  # write empty circumference
-#write test for this
-
-class Circle(Shape):
-    def __init__(self, radius, x, y):
-        c = Point(x, y)
-        super().__init__(c)
-        self.r = float(radius)
-    def circumference(self):
-
-        return round(2 * numpy.pi * self.r, 3)
-
-class Square(Shape):
-    def __init__(self,radius, x, y):
-        c = Point(x,y)
-        super().__init__(c)
-        self.r = float(radius)
-    def circumference(self):
-        return round((2*self.r/(2)**0.5)*4,3)
-
-
-
-
-
-# circle and square. in common: a center
-#uml
-# class circle and class square
-# common class could be shape
+        self.r = radius

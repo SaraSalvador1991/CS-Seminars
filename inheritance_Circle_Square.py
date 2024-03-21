@@ -16,19 +16,19 @@ class Shape:
         pass
 
 class Circle(Shape):
-    def __int__(self,center,radius):
-        super().__int__(center)
+    def __init__(self,center,radius):
+        super().__init__(center)
         self.r = radius
 
     def area(self):
         return math.pi * self.r**2
 
     def perimeter(self):
-        return 2*math.pi*self.radius
+        return 2*math.pi*self.r
 
 class Square(Shape):
-    def __int__(self, center, side_lenth):
-        super().__int__(center)
+    def __init__(self, center, side_lenth):
+        super().__init__(center)
         self.side_lenth = side_lenth
 
     def area(self):
@@ -38,8 +38,8 @@ class Square(Shape):
         return 4*self.side_lenth
 
 class Isoscele_Triangle(Shape):
-    def __int__(self, center, side, height):
-        super().__int__(center)
+    def __init__(self, center, side, height):
+        super().__init__(center)
         self.side = side
         self.height = height
 
@@ -49,3 +49,12 @@ class Isoscele_Triangle(Shape):
     def circumference(self):
         return 3*self.side
 
+center_point = Point(0, 0)
+circle = Circle(center_point, 5)
+square = Square(center_point, 4)
+
+print("Circle area:", circle.area())
+print("Circle perimeter:", circle.perimeter())
+
+print("Square area:", square.area())
+print("Square perimeter:", square.perimeter())

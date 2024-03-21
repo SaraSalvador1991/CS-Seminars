@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from Circle_Class import Circle
+#from Circle_Class import Circle
 from Functions_Circle import compute_intersection
 from Functions_Circle import Area
 from inheritance_Circle_Square import Point
