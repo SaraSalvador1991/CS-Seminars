@@ -11,7 +11,7 @@ class Shape:
         self.y = self.center.y
 
     def circumference(self):
-        return round(2 * numpy.pi * self.r, 3)  # write empy circumference
+        return round(2 * numpy.pi * self.r, 3)  # write empty circumference
 #write test for this
 
 class Circle(Shape):
