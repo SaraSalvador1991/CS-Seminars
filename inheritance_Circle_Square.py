@@ -36,3 +36,16 @@ class Square(Shape):
 
     def perimeter(self):
         return 4*self.side_lenth
+
+class Isoscele_Triangle(Shape):
+    def __int__(self, center, side, height):
+        super().__int__(center)
+        self.side = side
+        self.height = height
+
+    def area(self):
+        return self.side * self.height/2
+
+    def circumference(self):
+        return 3*self.side
+
