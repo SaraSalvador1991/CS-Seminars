@@ -14,9 +14,17 @@ class Shape:
 
     def area(self):
         pass
+    def set_weight(self, weight):
+        self.weight = weight
+
+    #def # gravity center
+
+# callback pattern, design pattern most powerful
+#user form class SensorObs, with a function getData(), Sensor class (with function set_observe(SensorObs). Sensor S, s.setObserver(self), getData()
+# make a temperature sensor, giving back the data when it changes temperature of 5 degrees (random values)
 
 class Circle(Shape):
-    def __init__(self,center,radius):
+    def __init__(self,center:Point,radius):
         super().__init__(center)
         self.r = radius
 
@@ -27,7 +35,7 @@ class Circle(Shape):
         return 2*math.pi*self.r
 
 class Square(Shape):
-    def __init__(self, center, side_lenth):
+    def __init__(self, center:Point, side_lenth):
         super().__init__(center)
         self.side_lenth = side_lenth
 
@@ -37,8 +45,8 @@ class Square(Shape):
     def perimeter(self):
         return 4*self.side_lenth
 
-class Isoscele_Triangle(Shape):
-    def __init__(self, center, side, height):
+class Triangle(Shape):
+    def __init__(self, center:Point, side, height):
         super().__init__(center)
         self.side = side
         self.height = height
@@ -49,12 +57,14 @@ class Isoscele_Triangle(Shape):
     def circumference(self):
         return 3*self.side
 
-center_point = Point(0, 0)
-circle = Circle(center_point, 5)
-square = Square(center_point, 4)
+if __name__ == '__main__':
 
-print("Circle area:", circle.area())
-print("Circle perimeter:", circle.perimeter())
+    center_point = Point(0, 0)
+    circle = Circle(center_point, 5)
+    square = Square(center_point, 4)
 
-print("Square area:", square.area())
-print("Square perimeter:", square.perimeter())
+    print("Circle area:", circle.area())
+    print("Circle perimeter:", circle.perimeter())
+
+    print("Square area:", square.area())
+    print("Square perimeter:", square.perimeter())
