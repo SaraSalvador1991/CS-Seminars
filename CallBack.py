@@ -25,14 +25,6 @@ if __name__ == "__main__":
     sensor = TemperatureSensor()
     sensor.set_callback(temperature_change_callback)
 
-    # get the initial temperature
-    initial_temperature = sensor.get_temperature()
-    print(f"Initial temperature: {initial_temperature} degrees")
-
-    # simulate the temperature changes
+    # Simulate temperature changes
     for _ in range(20):
         sensor.simulate_temperature_change()
-
-    # get the final temperature after 20 changes
-    final_temperature = sensor.get_temperature()
-    print(f"Final temperature: {final_temperature} degrees")
